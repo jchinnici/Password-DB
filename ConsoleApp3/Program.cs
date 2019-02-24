@@ -16,13 +16,20 @@ namespace PasswordMngr
         static void Main(string[] args)
         {
             Copy(1);
-            var cureentFileData = File.ReadAllText("database.txt");
-            LoadDataBase(cureentFileData);
+            var currentFileData = File.ReadAllText("database.txt");
+            LoadDataBase(currentFileData);
             while (true)
             {
+                
+                Console.WriteLine("Type and enter 'Add', 'List' or 'Delete'");
                 var input = Console.ReadLine();
-                if (input == "Add shit")
+                input = input.ToLower();
+                if (input == "add")
                     AddRecord();
+                else if (input == "list")
+                    ListRecordByName();
+                else if (input == "delete")
+                    RemoveRecord();
 
                 Thread.Sleep(50);
 
@@ -30,8 +37,7 @@ namespace PasswordMngr
         }
         static void ListRecordByName()
         {
-            //{id} {Name}
-            //{1} {reddit}
+            Console.WriteLine(File.ReadAllText("database.txt"));
         }
 
         static void Copy(int id)
@@ -79,7 +85,11 @@ namespace PasswordMngr
 
         static void RemoveRecord(int id)
         {
+            var record = new Record();
+            id = record.Id;
+            record.Id = Console.Read();
             database.Remove(id);
+            Savedatabase();
         }
 
         static void Savedatabase()
