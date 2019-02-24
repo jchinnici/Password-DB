@@ -21,7 +21,7 @@ namespace PasswordMngr
             while (true)
             {
                 var input = Console.ReadLine();
-                if (input == "Add")
+                if (input == "Add shit")
                     AddRecord();
 
                 Thread.Sleep(50);
