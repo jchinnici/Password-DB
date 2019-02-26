@@ -20,7 +20,8 @@ namespace PasswordMngr
             LoadDataBase(currentFileData);
             while (true)
             {
-                
+                Thread.Sleep(50);
+                var record = new Record();
                 Console.WriteLine("Type and enter 'Add', 'List' or 'Delete'");
                 var input = Console.ReadLine();
                 input = input.ToLower();
@@ -29,9 +30,9 @@ namespace PasswordMngr
                 else if (input == "list")
                     ListRecordByName();
                 else if (input == "delete")
-                    RemoveRecord();
+                     RemoveRecord();
 
-                Thread.Sleep(50);
+                
 
             }
         }
@@ -83,13 +84,13 @@ namespace PasswordMngr
             Savedatabase();
         }
 
-        static void RemoveRecord(int id)
+        static void RemoveRecord()
         {
             var record = new Record();
-            id = record.Id;
-            record.Id = Console.Read();
-            database.Remove(id);
-            Savedatabase();
+            Console.Write("ID num: ");
+            record.Id = Int32.Parse(Console.ReadLine());
+                database.Remove(record.Id);
+                Savedatabase();
         }
 
         static void Savedatabase()
