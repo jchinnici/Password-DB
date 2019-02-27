@@ -86,10 +86,9 @@ namespace PasswordMngr
 
         static void RemoveRecord()
         {
-            var record = new Record();
+            
             Console.Write("ID num: ");
-            record.Id = Int32.Parse(Console.ReadLine());
-                database.Remove(record.Id);
+            database.Remove(Int32.Parse(Console.ReadLine()));
                 Savedatabase();
         }
 
